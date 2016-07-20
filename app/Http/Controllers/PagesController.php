@@ -17,11 +17,11 @@ class PagesController extends Controller {
 	}
 
 	public function getAbout() {
-		$first = 'Alex';
-		$last = 'Curtis';
+		$first = 'Wahida';
+		$last = 'Moon';
 
 		$fullname = $first . " " . $last;
-		$email = 'alex@jacurtis.com';
+		$email = 'wahida.moon80@gmail.com';
 		$data = [];
 		$data['email'] = $email;
 		$data['fullname'] = $fullname;
@@ -46,7 +46,7 @@ class PagesController extends Controller {
 
 		Mail::send('emails.contact', $data, function($message) use ($data){
 			$message->from($data['email']);
-			$message->to('hello@devmarketer.io');
+			$message->to('selimcse98@gmail.com');
 			$message->subject($data['subject']);
 		});
 

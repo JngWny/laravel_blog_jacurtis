@@ -1,0 +1,56 @@
+$ git clone https://github.com/jacurtis/laravel-blog-tutorial.git ./jacurtis
+
+$ cd jacurtis/
+
+$ composer install
+
+$ cp .env.example .env
+//Make necessary changes to database connection and email config
+
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=yrHYCtGJYOGg98Rn7RWVIkDLDIvzfm8d
+
+DB_HOST=mysql3.gear.host
+DB_DATABASE=selimdb
+DB_USERNAME=selimdb
+DB_PASSWORD=Gh6d6m4?j1?8
+
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_DRIVER=sync
+
+REDIS_HOST=localhost
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=wahida.moon80@gmail.com
+MAIL_PASSWORD=Mursaleen
+MAIL_ENCRYPTION=tls
+
+$ php artisan key:generate
+//This is generate key and append to APP_KEY property of .env file
+
+$ php artisan migrate
+$ php artisan route:list
+
+$ php artisan serve
+
+php artisan make:migration create_tasks_table --create=tasks
+//This will create the php file 2015_10_27_141258_create_tasks_table.php in the App\Database\Migrations\ folder which will ultimately create tasks table
+
+
+$ git remote -v
+origin	https://github.com/jacurtis/laravel-blog-tutorial.git (fetch)
+origin	https://github.com/jacurtis/laravel-blog-tutorial.git (push)
+
+$ git remote remove origin
+
+$ git remote add origin https://github.com/Selimcse98/laravel_blog_jacurtis.git
+
+$ git remote -v
+origin	https://github.com/Selimcse98/laravel_blog_jacurtis.git (fetch)
+origin	https://github.com/Selimcse98/laravel_blog_jacurtis.git (push)

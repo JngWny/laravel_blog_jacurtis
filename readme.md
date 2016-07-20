@@ -1,3 +1,5 @@
+https://github.com/jacurtis/laravel-blog-tutorial
+
 # How To Build a (Basic) Blog with Laravel
 
 #### A YouTube Series by DevMarketer
@@ -46,7 +48,7 @@ Thank you for all the great feedback so far. If you have further questions you c
 
 Twitter: [Twitter @_jacurtis](http://twitter.com/_jacurtis) (Be sure to follow me too)
 
-Email: hello@devmarketer.io
+Email: selimcse98@gmail.com
 
 ## Hire Me
 

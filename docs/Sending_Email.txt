@@ -1,0 +1,87 @@
+http://localhost:8000/contact
+
+cat /Users/mohammadselimmiah/Sites/jacurtis/.env
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=yrHYCtGJYOGg98Rn7RWVIkDLDIvzfm8d
+
+DB_HOST=mysql3.gear.host
+DB_DATABASE=selimdb
+DB_USERNAME=selimdb
+DB_PASSWORD=Gh6d6m4?j1?8
+
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_DRIVER=sync
+
+REDIS_HOST=localhost
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=wahida.moon80@gmail.com
+MAIL_PASSWORD=Mursaleen
+MAIL_ENCRYPTION=tls
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Post;
+use Mail;
+use Session;
+
+class PagesController extends Controller {
+
+   public function getIndex() {
+      $posts = Post::orderBy('created_at', 'desc')->limit(4)->get();
+      return view('pages.welcome')->withPosts($posts);
+   }
+
+   public function getAbout() {
+      $first = 'Wahida';
+      $last = 'Moon';
+
+      $fullname = $first . " " . $last;
+      $email = 'wahida.moon80@gmail.com';
+      $data = [];
+      $data['email'] = $email;
+      $data['fullname'] = $fullname;
+      return view('pages.about')->withData($data);
+   }
+
+   public function getContact() {
+      return view('pages.contact');
+   }
+
+   public function postContact(Request $request) {
+      $this->validate($request, [
+         'email' => 'required|email',
+         'subject' => 'min:3',
+         'message' => 'min:10']);
+
+      $data = array(
+         'email' => $request->email,
+         'subject' => $request->subject,
+         'bodyMessage' => $request->message
+         );
+
+      Mail::send('emails.contact', $data, function($message) use ($data){
+         $message->from($data['email']);
+         $message->to('selimcse98@gmail.com');
+         $message->subject($data['subject']);
+      });
+
+      Session::flash('success', 'Your Email was Sent!');
+
+      return redirect('/');
+   }
+
+
+}
