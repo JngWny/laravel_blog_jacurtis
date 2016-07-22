@@ -30,7 +30,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('auth/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
 	// Registration Routes
-	Route::get('auth/register', 'Auth\AuthController@getRegister');
+	Route::get('auth/register', ['as'=> 'register', 'uses'=>'Auth\AuthController@getRegister']);
 	Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 	// Password Reset Routes
@@ -54,7 +54,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
     Route::get('contact', 'PagesController@getContact');
     Route::post('contact', 'PagesController@postContact');
-	Route::get('about', 'PagesController@getAbout');
+	//Route::get('about/{data}', 'PagesController@getAbout');
+    Route::get('about', 'PagesController@getAbout');
 	Route::get('/', 'PagesController@getIndex');
 	Route::resource('posts', 'PostController');
 });

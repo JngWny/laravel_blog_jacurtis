@@ -16,7 +16,8 @@
 			<h1>Create New Post</h1>
 			<hr>
 
-			{!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '')) !!}
+			{{--!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '')) !!--}}
+			{!! Form::open(array('url' => 'posts', 'data-parsley-validate' => '')) !!}
 				{{ Form::label('title', 'Title:') }}
 				{{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 
@@ -39,7 +40,6 @@
 					@endforeach
 
 				</select>
-
 
 
 				{{ Form::label('body', "Post Body:") }}
